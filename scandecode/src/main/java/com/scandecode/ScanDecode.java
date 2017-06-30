@@ -42,6 +42,7 @@ public class ScanDecode implements ScanInterface {
         //判断设置中快捷使能是否勾选
         if (SystemProperties.get("persist.sys.keyreport", "true").equals("true")) {
             isFlag = true;
+            stopScanService(SERVICE_6603);
             SystemProperties.set("persist.sys.keyreport", "false");
         }
         //判断扫描的三种模式
