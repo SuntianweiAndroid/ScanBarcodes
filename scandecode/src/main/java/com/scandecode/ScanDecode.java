@@ -73,19 +73,19 @@ public class ScanDecode implements ScanInterface {
      */
     @Override
     public void initService(String s) {
-        if (SystemProperties.get("persist.sys.keyreport", "true").equals("false")) {//判断设置中快捷使能是否勾选
-            SystemProperties.set("persist.sys.keyreport", "true");
-            Log.i(TAG, "initService:    使能flse");
-            isFlag = true;
-            if (SystemProperties.get("persist.sys.scanheadtype").equals("6603")) {//判断是否为6603扫头
-                SystemProperties.set("persist.sys.iscamra", "close");
-                startScanService(SERVICE_6603);
-                Log.i(TAG, "initService:   6603 ");
-            } else {
-                startScanService(SERVICE_ELSE);
-                Log.i(TAG, "initService:   else ");
-            }
-        }
+//        if (SystemProperties.get("persist.sys.keyreport", "true").equals("false")) {//判断设置中快捷使能是否勾选
+//            SystemProperties.set("persist.sys.keyreport", "true");
+//            Log.i(TAG, "initService:    使能flse");
+//            isFlag = true;
+//            if (SystemProperties.get("persist.sys.scanheadtype").equals("6603")) {//判断是否为6603扫头
+//                SystemProperties.set("persist.sys.iscamra", "close");
+//                startScanService(SERVICE_6603);
+//                Log.i(TAG, "initService:   6603 ");
+//            } else {
+//                startScanService(SERVICE_ELSE);
+//                Log.i(TAG, "initService:   else ");
+//            }
+//        }
         SystemProperties.set("persisy.sys.scankeydisable", s);//是否屏蔽快捷按键
         //判断扫描的三种模式
         if (SystemProperties.get("persist.sys.scanmode", "one").equals("one")) {
@@ -155,15 +155,15 @@ public class ScanDecode implements ScanInterface {
     @Override
     public void onDestroy() {
         myContext.unregisterReceiver(receiver);
-        if (isFlag) {
-            isFlag = false;
-            SystemProperties.set("persist.sys.keyreport", "false");
-            if (SystemProperties.get("persist.sys.scanheadtype").equals("6603")) {
-                stopScanService(SERVICE_6603);
-            } else {
-                stopScanService(SERVICE_ELSE);
-            }
-        }
+//        if (isFlag) {
+//            isFlag = false;
+//            SystemProperties.set("persist.sys.keyreport", "false");
+//            if (SystemProperties.get("persist.sys.scanheadtype").equals("6603")) {
+//                stopScanService(SERVICE_6603);
+//            } else {
+//                stopScanService(SERVICE_ELSE);
+//            }
+//        }
         if (scanmode.equals("one")) {
             SystemProperties.set("persist.sys.scanmode", "one");
         } else if (scanmode.equals("two")) {

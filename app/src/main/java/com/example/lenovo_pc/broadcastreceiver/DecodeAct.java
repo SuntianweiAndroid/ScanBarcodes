@@ -2,7 +2,6 @@ package com.example.lenovo_pc.broadcastreceiver;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +28,7 @@ public class DecodeAct extends Activity {
         scanDecode = new ScanDecode(this);
         scanDecode.initService("true");
 
-        SystemClock.sleep(2000);
+//        SystemClock.sleep(2000);
         mReception = (EditText) findViewById(R.id.EditTextReception);
         btnSingleScan.setOnClickListener(new View.OnClickListener() {
             @Override
