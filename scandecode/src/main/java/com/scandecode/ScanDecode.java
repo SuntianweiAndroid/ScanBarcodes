@@ -39,6 +39,11 @@ public class ScanDecode implements ScanInterface {
 
     public ScanDecode(Context context) {
         this.myContext = context;
+        //判断设置中快捷使能是否勾选
+        if (SystemProperties.get("persist.sys.keyreport", "true").equals("true")) {
+            isFlag = true;
+            SystemProperties.set("persist.sys.keyreport", "false");
+        }
         //判断扫描的三种模式
         if (SystemProperties.get("persist.sys.scanmode", "one").equals("one")) {
             scanmode = "one";
@@ -78,13 +83,10 @@ public class ScanDecode implements ScanInterface {
 
     @Override
     public void initService() {
-        if (SystemProperties.get("persist.sys.keyreport", "true").equals("false")) {//判断设置中快捷使能是否勾选
-            isFlag = true;
-            if (SystemProperties.get("persist.sys.scanheadtype").equals("6603")) {//判断是否为6603扫头
-                startScanService(SERVICE_6603);
-            } else {
-                startScanService(SERVICE_ELSE);
-            }
+        if (SystemProperties.get("persist.sys.scanheadtype").equals("6603")) {//判断是否为6603扫头
+            startScanService(SERVICE_6603);
+        } else {
+            startScanService(SERVICE_ELSE);
         }
         //注册显示decode
         IntentFilter iFilter = new IntentFilter();
@@ -142,10 +144,11 @@ public class ScanDecode implements ScanInterface {
         myContext.unregisterReceiver(receiver);
         if (isFlag) {
             isFlag = false;
+            SystemProperties.set("persist.sys.keyreport", "true");
             if (SystemProperties.get("persist.sys.scanheadtype").equals("6603")) {
-                stopScanService(SERVICE_6603);
+                startScanService(SERVICE_6603);
             } else {
-                stopScanService(SERVICE_ELSE);
+                startScanService(SERVICE_ELSE);
             }
         }
         if (scanmode.equals("one")) {
