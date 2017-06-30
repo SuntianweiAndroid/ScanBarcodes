@@ -27,8 +27,9 @@ public class DecodeAct extends Activity {
         setContentView(R.layout.layout);
         btnSingleScan = (Button) findViewById(R.id.buttonscan);
         scanDecode = new ScanDecode(this);
-        scanDecode.initService();
-        SystemClock.sleep(1000);
+        scanDecode.initService("true");
+
+        SystemClock.sleep(2000);
         mReception = (EditText) findViewById(R.id.EditTextReception);
         btnSingleScan.setOnClickListener(new View.OnClickListener() {
             @Override

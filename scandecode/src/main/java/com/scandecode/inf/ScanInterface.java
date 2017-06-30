@@ -12,8 +12,9 @@ public interface ScanInterface {
 
     /**
      * 初始扫描服务
+     * @param s 是否屏蔽快捷扫描按键
      */
-    void initService();
+    void initService(String s);
     /**
      * 打开扫描
      */

@@ -39,6 +39,10 @@ public class BarcodeDemoActivity extends Activity implements OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.barcode);
+//        SystemProperties.set("persist.sys.iscamra","close");
+//        Intent Barcodeintent = new Intent();
+//        Barcodeintent.setPackage("com.geomobile.oemscanservice");
+//        startService(Barcodeintent);
         btnSingleScan = (Button) findViewById(R.id.buttonscan);
         btnClear = (Button) findViewById(R.id.buttonclear);
         toggleButtonRepeat = (ToggleButton) findViewById(R.id.button_repeat);
