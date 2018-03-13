@@ -6,15 +6,19 @@ package com.scandecode.inf;
 
 public interface ScanInterface {
 
-    public interface OnScanListener {
-        public void getBarcode(String data);
+    interface OnScanListener {
+        void getBarcode(String data);
+
+        void getBarcodeByte(byte[] bytes);
     }
 
     /**
      * 初始扫描服务
+     *
      * @param s 是否屏蔽快捷扫描按键
      */
     void initService(String s);
+
     /**
      * 打开扫描
      */
@@ -27,6 +31,7 @@ public interface ScanInterface {
 
     /**
      * 获取扫描解码结果
+     *
      * @param scanListener
      */
     void getBarCode(OnScanListener scanListener);
@@ -34,5 +39,5 @@ public interface ScanInterface {
     /**
      * 退出
      */
-    void onDestroy ();
+    void onDestroy();
 }

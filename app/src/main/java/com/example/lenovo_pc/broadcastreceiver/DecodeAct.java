@@ -11,6 +11,7 @@ import com.android.barcode.R;
 import com.scandecode.ScanDecode;
 import com.scandecode.inf.ScanInterface;
 
+
 /**
  * Created by lenovo-pc on 2017/6/29.
  */
@@ -47,7 +48,12 @@ public class DecodeAct extends Activity {
         scanDecode.getBarCode(new ScanInterface.OnScanListener() {
             @Override
             public void getBarcode(String data) {
-                mReception.append(data+"\n");
+                mReception.append(data + "\n");
+            }
+
+            @Override
+            public void getBarcodeByte(byte[] bytes) {
+
             }
         });
     }

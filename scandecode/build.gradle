@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 15
@@ -22,7 +22,7 @@ android {
 }
 task buildJar(type: Jar, dependsOn: ['build']) {
 //导出的jar文件名称
-    archiveName = 'ScanDecode.jar'
+    archiveName = 'ScanDecode1.1.jar'
 //从哪个目录打包jar
     from('build/intermediates/classes/debug')
 //导出的jar文件的存放目录（未指定则默认存放在build/libs下）

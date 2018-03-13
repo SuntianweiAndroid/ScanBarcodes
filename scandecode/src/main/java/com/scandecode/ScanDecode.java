@@ -68,7 +68,8 @@ public class ScanDecode implements ScanInterface {
 //            SystemProperties.set("persist.sys.iscamra","close");
 
     /**
-     *   初始化扫描服务
+     * 初始化扫描服务
+     *
      * @param s 是否屏蔽快捷扫描按键  （功能暂未添加）
      */
     @Override
@@ -190,8 +191,12 @@ public class ScanDecode implements ScanInterface {
             String action = intent.getAction();
             if (action.equals(RECE_DATA_ACTION)) {
                 String data = intent.getStringExtra("se4500");
+                byte[] bytes = intent.getByteArrayExtra("se4500_byte");
                 if (data != null) {
                     listener.getBarcode(data);
+                }
+                if (bytes != null) {
+                    listener.getBarcodeByte(bytes);
                 }
             }
         }
